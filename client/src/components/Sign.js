@@ -1,5 +1,4 @@
-import React,{useState,useEffect, useContext} from 'react';
-import {NavLink} from 'react-router-dom';
+import React,{useState, useContext} from 'react';
 import { SignContext } from '../context/SignContext';
 import axios from 'axios';
 
@@ -85,7 +84,7 @@ export const Sign = () =>{
       <button
         className="btn btn-success"
         onClick={regHandler}
-      >Sign In</button>
+      >Sign Up</button>
       <div>
         <p>Already have an account? <span className='link' onClick={swapHandler}> Sign in</span>.</p>
       </div>

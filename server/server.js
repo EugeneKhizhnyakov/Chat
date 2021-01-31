@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const Room = require('./models/Room');
 const Message = require('./models/Message');
 
 const PORT = config.get('port') || 9999;
@@ -24,14 +23,13 @@ io.on('connection', (socket) => {
     socket.join(roomId);
   });
 
-  socket.on('message', async ({ userName, text, roomId  }) => {
+  socket.on('message', async ({ userName, roomId, text  }) => {
     const message = new Message({text, userName, owner: roomId});
     await message.save();
     socket.to(roomId).broadcast.emit('message', message);
   });
 
-  socket.on('disconnect', () => {
-  });
+  socket.on('disconnect', () => {});
 });
 
 

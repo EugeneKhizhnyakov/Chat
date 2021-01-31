@@ -11,7 +11,7 @@ export const Chat = ({ messages, userName, roomId, onAddMessage }) => {
       roomId,
       text: messageValue,
     });
-    onAddMessage({ userName, text: messageValue,  });
+    onAddMessage({ userName, text: messageValue, });
     setMessageValue('');
   };
 
@@ -46,7 +46,7 @@ export const Chat = ({ messages, userName, roomId, onAddMessage }) => {
               onChange={(e) => setMessageValue(e.target.value)}
               className="form-control"
               rows="3"></textarea>
-            <button onClick={()=>messageValue!=''?onSendMessage: alert('Wrong data')} type="button" className="btn btn-primary">
+            <button onClick={()=>messageValue?onSendMessage(): alert('Wrong data')} type="button" className="btn btn-primary">
               Send
             </button>
           </form>
